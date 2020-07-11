@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'mc-button',
@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class ButtonComponent implements OnInit {
 
   constructor() { }
+
+  @Input()
+  text: string;
 
   ngOnInit(): void {
   }

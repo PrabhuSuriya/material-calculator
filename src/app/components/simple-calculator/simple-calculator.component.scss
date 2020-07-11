@@ -1,3 +1,107 @@
-.simple-calc-container{
- display: inline-block;   
+.simple-calc-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1em 1em;
+  grid-template-areas: "display display display display" "extras extras extras extras" "clear divide multiply erase" "seven eight nine minus" "four five six plus" "one two three equal" "zero double-zero point equal";
+
+  max-width: 23em;
+  margin: 0 auto;
+}
+
+.display {
+  grid-area: display;
+}
+
+.extras {
+  grid-area: extras;
+}
+
+.equal {
+  grid-area: equal;
+}
+
+.clear {
+  grid-area: clear;
+}
+
+.divide {
+  grid-area: divide;
+}
+
+.multiply {
+  grid-area: multiply;
+}
+
+.erase {
+  grid-area: erase;
+}
+
+.seven {
+  grid-area: seven;
+}
+
+.eight {
+  grid-area: eight;
+}
+
+.nine {
+  grid-area: nine;
+}
+
+.minus {
+  grid-area: minus;
+}
+
+.one {
+  grid-area: one;
+}
+
+.two {
+  grid-area: two;
+}
+
+.three {
+  grid-area: three;
+}
+
+.four {
+  grid-area: four;
+}
+
+.five {
+  grid-area: five;
+}
+
+.six {
+  grid-area: six;
+}
+
+.plus {
+  grid-area: plus;
+}
+
+.zero {
+  grid-area: zero;
+}
+
+.double-zero {
+  grid-area: double-zero;
+}
+
+.point {
+  grid-area: point;
+}
+
+.square {
+    height: 5em;
+    width: 5em;
+    display: flex;
+    place-content: center;
+}
+
+.vertical-double{
+    display: flex;
+    width: 5em;
+    place-content: center;
 }
