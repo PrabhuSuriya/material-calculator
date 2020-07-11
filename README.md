@@ -10,6 +10,6 @@ This project developed using Angular Framework with Material design. The state i
 4. Open your favorite browser and hit `http://localhost:5000` 🚀
 5. Start hitting those keys and crunch some numbers. 🔩
 
-## RoamMap
+## Roadmap
 
  _TBD_
