@@ -1,12 +1,13 @@
 .simple-calc-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2em 1fr 1fr 1fr 1fr 1fr;
   gap: 1em 1em;
   grid-template-areas: "display display display display" "extras extras extras extras" "clear divide multiply erase" "seven eight nine minus" "four five six plus" "one two three equal" "zero double-zero point equal";
 
   max-width: 23em;
   margin: 0 auto;
+  padding: 2em 0;
 }
 
 .display {

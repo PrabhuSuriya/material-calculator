@@ -7,12 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonComponent } from './components/button/button.component';
 import { SimpleCalculatorComponent } from './components/simple-calculator/simple-calculator.component';
 import { MatButtonModule } from '@angular/material/button';
+import { DisplayComponent } from './components/display/display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonComponent,
-    SimpleCalculatorComponent
+    SimpleCalculatorComponent,
+    DisplayComponent
   ],
   imports: [
     BrowserModule,

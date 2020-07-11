@@ -1,0 +1,14 @@
+.display-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 3.5em;
+  font-family: "Revalia", cursive;
+  border: 1px solid gray;
+  border-radius: 6px;
+  padding: 0 0.3em;
+  color: #193d06;
+    text-shadow: 0px 0 6px green;
+}
