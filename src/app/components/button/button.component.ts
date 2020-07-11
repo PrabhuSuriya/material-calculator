@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'mc-button',
@@ -6,14 +6,13 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
   styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent {
 
-  constructor() { }
+  @Output()
+  buttonPressed = new EventEmitter();
 
-  @Input()
-  text: string;
-
-  ngOnInit(): void {
+  onClick($event) {
+    this.buttonPressed.emit($event);
   }
 
 }

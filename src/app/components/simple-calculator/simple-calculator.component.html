@@ -1,28 +1,66 @@
 <div class="simple-calc-container">
   <div class="display">
-      <mc-display></mc-display>
+    <mc-display>{{currentInput}}</mc-display>
   </div>
   <div class="extras"></div>
 
-  <div class="square one"><mc-button>1</mc-button></div>
-  <div class="square two"><mc-button>2</mc-button></div>
-  <div class="square three"><mc-button>3</mc-button></div>
-  <div class="square four"><mc-button>4</mc-button></div>
-  <div class="square five"><mc-button>5</mc-button></div>
-  <div class="square six"><mc-button>6</mc-button></div>
-  <div class="square seven"><mc-button>7</mc-button></div>
-  <div class="square eight"><mc-button>8</mc-button></div>
-  <div class="square nine"><mc-button>9</mc-button></div>
-  <div class="square zero"><mc-button>0</mc-button></div>
-  <div class="square double-zero"><mc-button>00</mc-button></div>
+  <div class="square one">
+    <mc-button (buttonPressed)="buttonPressed(1)">1</mc-button>
+  </div>
+  <div class="square two">
+    <mc-button (buttonPressed)="buttonPressed('2')">2</mc-button>
+  </div>
+  <div class="square three">
+    <mc-button (buttonPressed)="buttonPressed('3')">3</mc-button>
+  </div>
+  <div class="square four">
+    <mc-button (buttonPressed)="buttonPressed('4')">4</mc-button>
+  </div>
+  <div class="square five">
+    <mc-button (buttonPressed)="buttonPressed('5')">5</mc-button>
+  </div>
+  <div class="square six">
+    <mc-button (buttonPressed)="buttonPressed('6')">6</mc-button>
+  </div>
+  <div class="square seven">
+    <mc-button (buttonPressed)="buttonPressed('7')">7</mc-button>
+  </div>
+  <div class="square eight">
+    <mc-button (buttonPressed)="buttonPressed('8')">8</mc-button>
+  </div>
+  <div class="square nine">
+    <mc-button (buttonPressed)="buttonPressed('9')">9</mc-button>
+  </div>
+  <div class="square zero">
+    <mc-button (buttonPressed)="buttonPressed('0')">0</mc-button>
+  </div>
+  <div class="square double-zero">
+    <mc-button (buttonPressed)="buttonPressed('00')">00</mc-button>
+  </div>
 
-  <div class="square plus"><mc-button>+</mc-button></div>
-  <div class="square minus"><mc-button>-</mc-button></div>
-  <div class="square divide"><mc-button>/</mc-button></div>
-  <div class="square multiply"><mc-button>*</mc-button></div>
-  
-  <div class="square clear"><mc-button>CE</mc-button></div>
-  <div class="square erase"><mc-button>⬅</mc-button></div>
-  <div class="square point"><mc-button>.</mc-button></div>
-  <div class="vertical-double equal"><mc-button>=</mc-button></div>
+  <div class="square plus">
+    <mc-button (buttonPressed)="buttonPressed('+')">+</mc-button>
+  </div>
+  <div class="square minus">
+    <mc-button (buttonPressed)="buttonPressed('-')">-</mc-button>
+  </div>
+  <div class="square divide">
+    <mc-button (buttonPressed)="buttonPressed('/')">/</mc-button>
+  </div>
+  <div class="square multiply">
+    <mc-button (buttonPressed)="buttonPressed('*')">*</mc-button>
+  </div>
+
+  <div class="square clear">
+    <mc-button (buttonPressed)="buttonPressed('CE')">CE</mc-button>
+  </div>
+  <div class="square erase">
+    <mc-button (buttonPressed)="buttonPressed('B')">⬅</mc-button>
+  </div>
+  <div class="square point">
+    <mc-button (buttonPressed)="buttonPressed('.')">.</mc-button>
+  </div>
+  <div class="vertical-double equal">
+    <mc-button (buttonPressed)="buttonPressed('=')">=</mc-button>
+  </div>
 </div>
