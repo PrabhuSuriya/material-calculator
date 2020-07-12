@@ -1,6 +1,9 @@
 <div class="simple-calc-container">
   <div class="display">
-    <mc-display>{{currentInput}}</mc-display>
+    <mc-display>
+      <span main>{{ currentValue$ | async }}</span>
+      <span secondary>{{ currentValue$ | async }}</span>
+    </mc-display>
   </div>
   <div class="extras"></div>
 
