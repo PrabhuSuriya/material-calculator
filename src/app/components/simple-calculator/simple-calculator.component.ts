@@ -12,21 +12,32 @@ import { SimpleCalcService } from 'src/app/services/simple-calc.service';
 export class SimpleCalculatorComponent implements OnInit {
 
   @Select(SimpleCalcState.currentValue) public currentValue$: Observable<string>;
+  @Select(SimpleCalcState.previousValue) public previousValue$: Observable<string>;
 
   constructor(private _store: Store, private _simpleCalcService: SimpleCalcService) { }
 
   ngOnInit(): void {
+    this._store.select(s => s.OperationStack).subscribe(console.log)
   }
 
-  buttonPressed(key) {
-    console.log(key);
-    this.processKey(key);
+  numberPressed(key) {
+    // console.log(key);
+    this._simpleCalcService.buttonPressed({ value: key, type: 'number' })
   }
+  operatorPressed(key) {
+    // console.log(key);
+    this._simpleCalcService.buttonPressed({ value: key, type: 'operator' })
+  }
+  actionPressed(key) {
+    // console.log(key);
+    this._simpleCalcService.buttonPressed({ value: key, type: 'action' })
+  }
+
   processKey(key: any) {
     if (/[0-9.]/.test(key)) {
 
       // this.currentInput += key;
-      this._store.dispatch(new UpdateCurrentValue(key));
+      // this._store.dispatch(new UpdateCurrentValue(key));
     }
     else {
       this.processSplKey(key);

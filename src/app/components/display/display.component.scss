@@ -14,15 +14,23 @@
   color: #193d06;
   text-shadow: 0px 0 6px green;
   overflow: hidden;
+  position: relative;
 
   font-family: "Revalia", cursive;
   .main {
     height: 70%;
     font-size: 3em;
     // margin-top: -.5em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
   }
   .secondary {
     height: 30%;
     font-size: 1em;
+    padding-right: .5em;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
