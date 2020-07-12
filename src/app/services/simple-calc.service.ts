@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CalcKey } from '../models/calc-key.model';
 import { Store } from '@ngxs/store';
-import { UpdateCurrentValue, ClearCurrentValue, BackspaceCurrentValue, PushToStack } from '../store/simple-calc-state/simple-calc.actions';
+import { UpdateCurrentValue, ClearCurrentValue, BackspaceCurrentValue, PushToStack, UpdateResult } from '../store/simple-calc-state/simple-calc.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,9 @@ export class SimpleCalcService {
             break;
           case 'B':
             this._store.dispatch(new BackspaceCurrentValue());
+            break;
+          case '=':
+            this._store.dispatch(new UpdateResult());
             break;
         }
       }

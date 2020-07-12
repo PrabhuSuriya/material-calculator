@@ -13,6 +13,10 @@ export class Stack<T> {
         return this.length === 0;
     }
 
+    public get Length(): number {
+        return this.length;
+    }
+
     public isFull(): boolean {
         return this.length === this.maxSize;
     }
@@ -45,7 +49,7 @@ export class Stack<T> {
     public stackContents(): void {
         console.log('Stack Contents');
         for (let i = 0; i < this.length; ++i) {
-            console.log(`stack[${i}]: ${this.stack[i]}`);
+            console.log(`stack[${i}]: ${JSON.stringify(this.stack[i])}`);
         }
     }
 }

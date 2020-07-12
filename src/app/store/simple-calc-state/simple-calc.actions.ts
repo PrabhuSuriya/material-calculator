@@ -10,6 +10,11 @@ export class ClearCurrentValue {
     constructor() { }
 }
 
+export class UpdateResult {
+    static readonly type = '[SIMPLECALC] Update Result';
+    constructor() { }
+}
+
 export class BackspaceCurrentValue {
     static readonly type = '[SIMPLECALC] Backspace Current Value';
     constructor() { }

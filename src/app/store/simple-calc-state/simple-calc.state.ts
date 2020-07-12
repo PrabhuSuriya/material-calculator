@@ -2,13 +2,13 @@ import { SimpleCalcStateModel } from 'src/app/models/simple-calc-state.model';
 import { Stack } from 'src/app/models/stack';
 import { State, Selector, StateContext, Action } from '@ngxs/store';
 import { SimpleCalcService } from 'src/app/services/simple-calc.service';
-import { UpdateCurrentValue, ClearCurrentValue, BackspaceCurrentValue, PushToStack } from './simple-calc.actions';
+import { UpdateCurrentValue, ClearCurrentValue, BackspaceCurrentValue, PushToStack, UpdateResult } from './simple-calc.actions';
 import { Injectable } from '@angular/core';
-import { CalcKey } from 'src/app/models/calc-key.model';
+import { CalcKey, EMTPY_VALUE } from 'src/app/models/calc-key.model';
 
 const INITIAL_SIMPLE_CALC_STATE: SimpleCalcStateModel = {
-    CurrentValue: { type: 'number', value: '' },
-    PreviousValue: { type: 'number', value: '' },
+    CurrentValue: EMTPY_VALUE(),
+    PreviousValue: EMTPY_VALUE(),
     OperationStack: new Stack<CalcKey>(100),
 }
 
@@ -36,20 +36,42 @@ export class SimpleCalcState {
     @Action(UpdateCurrentValue)
     updateCurrentValue(ctx: StateContext<SimpleCalcStateModel>, action: UpdateCurrentValue) {
         const state = ctx.getState();
+        // console.log(state.OperationStack.Length)
         const currentValue = state.CurrentValue;
         if (currentValue.type === action.key.type) {
-            currentValue.value = `${currentValue.value}${action.key.value}`
+            currentValue.value = currentValue.type === 'number' ? `${currentValue.value}${action.key.value}` : action.key.value
             ctx.patchState({ CurrentValue: currentValue });
         }
         else {
             const stack = state.OperationStack;
-            stack.push(action.key);
-                ctx.patchState({
+            stack.push(state.CurrentValue);
+            const result = operateOnStack(stack);
+            if (result) {
+                stack.push(result)
+            }
+            ctx.patchState({
                 CurrentValue: action.key,
-                PreviousValue: currentValue,
+                PreviousValue: result ? result : currentValue,
                 OperationStack: stack
             });
         }
+        state.OperationStack.stackContents();
+    };
+
+    @Action(UpdateResult)
+    updateResult(ctx: StateContext<SimpleCalcStateModel>) {
+        const state = ctx.getState();
+        const stack = state.OperationStack;
+        stack.push(state.CurrentValue);
+        const result = operateOnStack(stack);
+        if (result) {
+            stack.push(result)
+        }
+        ctx.patchState({
+            CurrentValue: result ? result : EMTPY_VALUE(),
+            PreviousValue: result ? EMTPY_VALUE() : state.PreviousValue,
+            OperationStack: stack
+        });
     };
 
     @Action(ClearCurrentValue)
@@ -87,4 +109,21 @@ export class SimpleCalcState {
     //             map(data => ctx.dispatch(new UpdateCurrentValue('')))
     //         );
     // }
+}
+
+function operateOnStack(stack: Stack<CalcKey>): CalcKey {
+    if (stack.Length >= 3) {
+        const val1 = stack.pop();
+        const op = stack.pop();
+        const val2 = stack.pop();
+        return operate(val2, val1, op);
+
+    }
+    else {
+        return null;
+    }
+}
+
+function operate(x: CalcKey, y: CalcKey, operation: CalcKey): CalcKey {
+    return { value: operation.operation(x.value, y.value), type: 'number' };
 }
