@@ -12,7 +12,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 8
-      - run: npm build
-      - run: cp ./dist/material-calculator/index.html 200.html
+      - run: npm install
+      - run: npm run build
+      - run: cp ./dist/material-calculator/index.html ./dist/material-calculator/200.html
       - run: npm install -g surge
       - run: surge ./dist/material-calculator ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
