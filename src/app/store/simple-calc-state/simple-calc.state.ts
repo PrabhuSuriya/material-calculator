@@ -65,13 +65,14 @@ export class SimpleCalcState {
         stack.push(state.CurrentValue);
         const result = operateOnStack(stack);
         if (result) {
-            stack.push(result)
+            stack.clear();
+            // stack.push(result);
+            ctx.patchState({
+                CurrentValue: result,
+                PreviousValue: EMTPY_VALUE(),
+                OperationStack: stack
+            });
         }
-        ctx.patchState({
-            CurrentValue: result ? result : EMTPY_VALUE(),
-            PreviousValue: result ? EMTPY_VALUE() : state.PreviousValue,
-            OperationStack: stack
-        });
     };
 
     @Action(ClearCurrentValue)

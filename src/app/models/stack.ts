@@ -38,6 +38,11 @@ export class Stack<T> {
         return retval;
     }
 
+    public clear(): void {
+        this.stack = [];
+        this.length = 0;
+    }
+
     public top(): T {
         if (this.isEmpty()) {
             throw new Error('Stack is empty');
